@@ -548,6 +548,7 @@ parse_field_header(Bytes) ->
 
 parse_field(Bytes) ->
     {FieldCode, WireType, Content} = parse_field_header(Bytes),
+    io:format("WireType: ~p~n",[WireType]),
     {FieldValue, Rest} =
         case WireType of
             ?TYPE_VARINT -> decode_varint(Content);
