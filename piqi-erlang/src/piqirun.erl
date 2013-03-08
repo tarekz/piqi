@@ -538,6 +538,7 @@ float_to_packed_fixed32(X) ->
 
 parse_field_header(Bytes) ->
     {Tag, Rest} = decode_varint(Bytes),
+    io:format("{Tag, Rest}: {~p, ~p}~n",[Tag, Rest]),
     Code = Tag bsr 3,
     WireType = Tag band 7,
     {Code, WireType, Rest}.
